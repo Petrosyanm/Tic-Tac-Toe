@@ -11,8 +11,8 @@ public class TicTacToeGame {
 		for(int i=0;i<3;i++)
 			for(int j=0;j<3;j++)
 				board[i][j]=' ';
-		    step=0;
-		    currentPlayer = 'X'; 
+		step=0;
+		currentPlayer = 'X'; 
 		    
 		JFrame frame = new JFrame("Tic-Tac-Toe");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,14 +80,12 @@ public class TicTacToeGame {
 	public static boolean checkWinner() {
 		for(int i=0;i<3;i++)
 		{
-			if(board[i][0]!=' ') {
-				if (board[i][0]==board[i][1] && board[i][1]==board[i][2]) {
+				if (board[i][0]!=' ' && board[i][0]==board[i][1] && board[i][1]==board[i][2]) {
 	                return true;
 	            }
-	            if (board[0][i]==board[1][i] && board[1][i]==board[2][i]) {
+	            if (board[0][i]!=' ' && board[0][i]==board[1][i] && board[1][i]==board[2][i]) {
 	                return true;
 	            }
-			}
 		}
 		if (board[0][0] != ' ' && board[0][0]==board[1][1] && board[1][1]==board[2][2]) {
             return true;
@@ -115,7 +113,8 @@ public class TicTacToeGame {
 				resetGame();
 			}
 		}
-		currentPlayer = (currentPlayer=='X') ? 'O': 'X';
+		if(step!=0)
+			currentPlayer = (currentPlayer=='X') ? 'O': 'X';
 		
 		
 	}
